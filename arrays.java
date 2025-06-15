@@ -160,10 +160,6 @@ public  class arrays{
       res.add(new int[]{start, end});
       return res.toArray(new int[res.size()][]);
   }
-       
-
-
-
   public  static int findTarget(int arr[], int target) {
     int n = arr.length;
     int si = 0;
@@ -184,19 +180,7 @@ public  class arrays{
     // If the target is not found, return -1
     return -1;
 }
-  public static void main(String[] args) {
-      
-    //  int intervals[][] = {{1,3},{2,6}} ;
-    //  int res[][] =  merge(intervals) ;
-
-    //  for(int i = 0 ; i<res.length ;i++) {
-    //   for(int j = 0 ; j<res[0].length ;j++) {
-    //     System.out.print(res[i][j] + " ");
-    //   }
-    //  }
-        int arr[] = {1,-1,5,4,7} ;
-        System.out.print(Prefixsum(arr));
-   }  
+  
   
   public static int Prefixsum (int arr[]) {
     int n = arr.length ;
@@ -233,7 +217,31 @@ public  class arrays{
     return Max ;
   }
   
+ 
+    public static int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
 
+        for (int i = 0; i < n; i++) {
+            int product = 1;
+            for (int j = 0; j < n; j++) {
+                if (i != j) {
+                    product *= nums[j];  // Fix: use nums[j] instead of j
+                }
+            }
+            res[i] = product;
+        }
+
+        return res;
+    }
+
+public static void main(String[] args) {   
+        int nums[] = {1,2,3} ;
+        int arr[] = productExceptSelf(nums) ;
+        for(int i : arr) {
+          System.out.print( i +" ");
+        }
+   }  
   
   }
 

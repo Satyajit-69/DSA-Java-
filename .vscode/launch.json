@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "dailyStriver",
+            "request": "launch",
+            "mainClass": "dailyStriver",
+            "projectName": "DSA_c0536794"
+        },
+        {
+            "type": "java",
             "name": "segmentTrees",
             "request": "launch",
             "mainClass": "segmentTrees",
