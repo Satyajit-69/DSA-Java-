@@ -147,11 +147,6 @@ public class dailyStriver {
     }
 
 
-    public static void main(String[] args) {
-       int stalls[] = {12, 34, 67, 90}; int k = 2 ;
-    //    System.out.println(aggressiveCows(stalls, k));
-    System.out.println(findPages(stalls,  k));
-    }
 
 
     public static int minmaxDiff(int n) {
@@ -163,7 +158,7 @@ public class dailyStriver {
         char replaceForMax = ' ';
         for (char c : maxChars) {
             if (c != '9') {
-                replaceForMax = c;
+                replaceForMax = c; //get the ch to replace
                 break;
             }
         }
@@ -282,6 +277,47 @@ public class dailyStriver {
         
         return allocation <= maxAllocation ;
     }
+
+     public static int longestSubsequence(String s, int k) {
+            int n = s.length() ;
+            
+            int count = 0 ;
+            int power = 0 ;
+            int valueSofar = 0 ;
+
+
+            //loop
+            for(int i = n-1 ; i>= 0 ;i--) {
+                if(s.charAt(i) == '0') {
+                    //always include
+                    count ++ ;
+                }else {
+                   if (power < 31) { // prevent overflow
+                   long add = 1L << power; // 2^power
+                        if (valueSofar + add <= k) {
+                            valueSofar += add;
+                            count++;
+                        }
+                      }
+                   }
+                   power++;
+                }
+            
+
+            return count ;
+
+
+     }
+
+
+    public static void main(String[] args) {
+       String s = "1001010";
+       int  k = 5 ;
+    //    System.out.println(aggressiveCows(stalls, k));
+    // System.out.println(findPages(stalls,  k));
+       System.out.println(longestSubsequence(s, k));
+    }
+
 }
 
 
