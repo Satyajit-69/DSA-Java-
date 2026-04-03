@@ -233,9 +233,8 @@ public class Stackb {
            }
            //return the op string
            return  sb.toString() ;
-         }
-            
-     public static  int rainwater(int height[]){
+         }   
+        public static  int rainwater(int height[]){
       //create a stack
       Stack<Integer> s=  new Stack<>() ;
       int ans  =0 ;

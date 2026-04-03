@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "bst$binary_search_tree",
+            "request": "launch",
+            "mainClass": "bst$binary_search_tree",
+            "projectName": "DSA_30c27bf"
+        },
+        {
+            "type": "java",
+            "name": "Solution",
+            "request": "launch",
+            "mainClass": "Solution",
+            "projectName": "DSA_c0536794"
+        },
+        {
+            "type": "java",
+            "name": "Leetcode",
+            "request": "launch",
+            "mainClass": "Leetcode",
+            "projectName": "DSA_c0536794"
+        },
+        {
+            "type": "java",
+            "name": "BrowserHistory",
+            "request": "launch",
+            "mainClass": "BrowserHistory",
+            "projectName": "DSA_c0536794"
+        },
+        {
+            "type": "java",
             "name": "dailyStriver",
             "request": "launch",
             "mainClass": "dailyStriver",

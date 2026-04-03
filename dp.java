@@ -39,6 +39,8 @@ public class dp {
         return ways[n] ;
     }
     static int countwaysTab(int n) {
+        
+
         int dp []= new int[n+1] ;
         dp[0] = 1 ;
 
@@ -926,5 +928,10 @@ public class dp {
         }
         //return the maxPath we have calculated
         return dp[x][y] = maxPath;
+    }
+
+
+    public static int jumpGame(int arr[]){
+        
     }
 }

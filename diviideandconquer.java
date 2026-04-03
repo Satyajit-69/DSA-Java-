@@ -17,7 +17,7 @@ public class diviideandconquer{
             //case a : left search :(
             if (arr[si]<=tar && tar<=arr[mid]){
                return search(arr, tar, si, mid-1) ;
-              }else{
+              }else{        
                 //case b : rightsearch 
                 return search(arr, tar, mid+1,ei ) ;
               }            

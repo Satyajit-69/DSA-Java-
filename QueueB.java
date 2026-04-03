@@ -50,16 +50,14 @@ public class QueueB {
       }
    }
  
-  public static void main(String[] args) {
-   int arr[]= {1,2,3,1,4,5,2,3,6} ;
-   int k =3 ;
-   int n = arr.length ;
-   Slidingwindowbruteforce(arr, k, n);
-   System.out.println();
-   SWDEQUE(arr, k, n);
-  }
-
-  public static void Slidingwindowbruteforce(int arr[], int k , int  n) {
+   public static void main(String[] args) {
+   int arr[]= {1,2,3,4} ;
+   Queue<Integer> q = arr2Queue(arr);
+   printQueue(q);
+   reveseQueue(q);
+   printQueue(q);
+}
+   public static void Slidingwindowbruteforce(int arr[], int k , int  n) {
      for(int i  =0 ;i<=n-k ;i++){
       //calculate the cur max 
       int curmax =  0; 
@@ -73,57 +71,92 @@ public class QueueB {
            System.out.print(curmax + " ");
      }
   }
-  public static void SWDEQUE (int arr[] , int K , int N ) {
-       //create a deque
-       Deque<Integer> Qi = new LinkedList<>();
+   public static void SWDEQUE (int arr[] , int K , int N ) {
+         //create a deque
+         Deque<Integer> Qi = new LinkedList<>();
 
-        /* Process first k (or first window)
-        elements of array */
-        int i;
-        for (i = 0; i < K; i++) {
+         /* Process first k (or first window)
+         elements of array */
+         int i;
+         for (i = 0; i < K; i++) {
 
-            // For every element, the previous
-            // smaller elements are useless so
-            // remove them from Qi
-            while (!Qi.isEmpty()
-                   && arr[i] >= arr[Qi.peekLast()])
-             { // Remove from rear
-                Qi.removeLast();
-             }
-               
-            // Add new element at rear of queue
-            Qi.addLast(i);
-        }
+               // For every element, the previous
+               // smaller elements are useless so
+               // remove them from Qi
+               while (!Qi.isEmpty()
+                     && arr[i] >= arr[Qi.peekLast()])
+               { // Remove from rear
+                  Qi.removeLast();
+               }
+                  
+               // Add new element at rear of queue
+               Qi.addLast(i);
+         }
 
-        // Process rest of the elements,
-        // i.e., from arr[k] to arr[n-1]
-        for (; i < N; ++i) {
+         // Process rest of the elements,
+         // i.e., from arr[k] to arr[n-1]
+         for (; i < N; ++i) {
 
-            // The element at the front of the
-            // queue is the largest element of
-            // previous window, so print it
-            System.out.print(arr[Qi.peek()] + " ");
+               // The element at the front of the
+               // queue is the largest element of
+               // previous window, so print it
+               System.out.print(arr[Qi.peek()] + " ");
 
-            // Remove the elements which
-            // are out of this window
-            while ((!Qi.isEmpty()) && Qi.peek() <= i - K)
-                Qi.removeFirst();
+               // Remove the elements which
+               // are out of this window
+               while ((!Qi.isEmpty()) && Qi.peek() <= i - K)
+                  Qi.removeFirst();
 
-            // Remove all elements smaller
-            // than the currently
-            // being added element (remove
-            // useless elements)
-            while ((!Qi.isEmpty())
-                   && arr[i] >= arr[Qi.peekLast()])
-                Qi.removeLast();
+               // Remove all elements smaller
+               // than the currently
+               // being added element (remove
+               // useless elements)
+               while ((!Qi.isEmpty())
+                     && arr[i] >= arr[Qi.peekLast()])
+                  Qi.removeLast();
 
-            // Add current element at the rear of Qi
-            Qi.addLast(i);
-        }
+               // Add current element at the rear of Qi
+               Qi.addLast(i);
+         }
 
-        // Print the maximum element of last window
-        System.out.print(arr[Qi.peek()]);
+         // Print the maximum element of last window
+         System.out.print(arr[Qi.peek()]);
 
-     
+      
+   }
+   public static void reveseQueue (Queue <Integer> q){
+      Stack <Integer> s = new Stack<>();
+      int n = q.size() ;
+      //first add all the items into the stack
+      for(int i = 0 ;i < n ; i++) {
+         int curr = q.poll() ;
+         s.push(curr);
+      }
+
+
+      //Stack to queue
+      while (!s.isEmpty()) {
+         q.add(s.pop());
+      }
+      
+   }
+   public static Queue<Integer> arr2Queue(int arr[]) {
+      if(arr.length == 0) {
+         return new ArrayDeque<>();
+      }
+      Queue<Integer> q = new ArrayDeque<>() ;
+      for(int i : arr) {
+         q.add(i);
+      }
+
+      return q ;
+   }
+   public static void printQueue(Queue <Integer> q) {
+   for(int i : q) {
+      System.out.print(i + " ");
+   }
+   System.out.println();
   }
-}
+   
+
+} 
